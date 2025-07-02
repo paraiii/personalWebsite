@@ -1,4 +1,4 @@
-# Bingxin Zhang - Personal Portfolio
+# Bingxin - Personal Portfolio
 
 A modern, cyber-themed personal portfolio website built with React, TypeScript, and Material-UI. Features a sleek dark/light theme toggle, real-time weather integration, and responsive design.
 
@@ -15,7 +15,7 @@ A modern, cyber-themed personal portfolio website built with React, TypeScript, 
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/paraiii/personalWeb
 cd personal
 
 # Install dependencies
