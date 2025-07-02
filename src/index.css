@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 确保主题切换按钮可点击 */
+[data-testid="theme-toggle"] {
+  pointer-events: auto !important;
+  z-index: 9999 !important;
+}
+
+/* Cyber主题CSS变量 */
+:root {
+  /* 深色主题变量 */
+  --editor-foreground: #9bb5e6;
+  --variables: #ff42ac;
+  --keywords: #a449ff;
+  --numbers: #ffa352;
+  --classes: #98a3ff;
+  --functions: #4d92ff;
+  --strings: #59f7ffe5;
+  --operators: #ff67e7;
+  --comments: #c5bfd1b7;
+  --widgets-background: #14121b;
+  --editor-background: #1a1b26;
+  --purple-accent: #804fb3;
+  --sidebar-background: #0d0d0d;
+  --list-background: #14121b;
+  --list-selected: #4f4f96;
+  --list-hover: #504bd5b7;
+  --terminal-background: #1d1f28;
+  --terminal-foreground: #ffffffc5;
+}
+
+/* 深色主题 */
+[data-theme="dark"] {
+  --editor-foreground: #9bb5e6;
+  --variables: #ff42ac;
+  --keywords: #a449ff;
+  --numbers: #ffa352;
+  --classes: #98a3ff;
+  --functions: #4d92ff;
+  --strings: #59f7ffe5;
+  --operators: #ff67e7;
+  --comments: #c5bfd1b7;
+  --widgets-background: #14121b;
+  --editor-background: #1a1b26;
+  --purple-accent: #804fb3;
+  --sidebar-background: #0d0d0d;
+  --list-background: #14121b;
+  --list-selected: #4f4f96;
+  --list-hover: #504bd5b7;
+  --terminal-background: #1d1f28;
+  --terminal-foreground: #ffffffc5;
+}
+
+/* 浅色主题 */
+[data-theme="light"] {
+  --editor-foreground: #2d3748;
+  --variables: #d53f8c;
+  --keywords: #805ad5;
+  --numbers: #dd6b20;
+  --classes: #3182ce;
+  --functions: #2b6cb0;
+  --strings: #38b2ac;
+  --operators: #e53e3e;
+  --comments: #718096;
+  --widgets-background: #f7fafc;
+  --editor-background: #ffffff;
+  --purple-accent: #804fb3;
+  --sidebar-background: #edf2f7;
+  --list-background: #f7fafc;
+  --list-selected: #e2e8f0;
+  --list-hover: #edf2f7;
+  --terminal-background: #2d3748;
+  --terminal-foreground: #ffffff;
+}
+
+/* 全局过渡动画 */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 霓虹发光效果 */
+.cyber-glow {
+  box-shadow: 0 0 10px var(--purple-accent);
+}
+
+.cyber-glow:hover {
+  box-shadow: 0 0 20px var(--purple-accent);
+}
+
+/* 终端样式 */
+.terminal-block {
+  background-color: var(--terminal-background);
+  color: var(--terminal-foreground);
+  border-radius: 8px;
+  padding: 16px;
+  font-family: "Fira Code", "Monaco", "Consolas", monospace;
+  border: 1px solid var(--operators);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sidebar-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--purple-accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--keywords);
+}
