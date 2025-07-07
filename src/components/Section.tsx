@@ -7,13 +7,12 @@ type SectionProps = {
   dataSection?: string;
   maxWidth?: "xs" | "sm" | "md" | "lg" | "xl";
 };
-
-export default function Section({
+export const Section = ({
   title,
   children,
   dataSection,
   maxWidth = "xl",
-}: SectionProps) {
+}: SectionProps) => {
   const theme = useTheme();
 
   return (
@@ -34,4 +33,4 @@ export default function Section({
       </Container>
     </Box>
   );
-}
+};

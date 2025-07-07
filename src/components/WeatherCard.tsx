@@ -4,25 +4,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useWeather } from "../hooks/useWeather";
 
-const WeatherCard: React.FC = () => {
+export const WeatherCard: React.FC = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   const { currentWeather, loading } = useWeather();
-
-  const getWeatherIcon = (description: string) => {
-    switch (description.toLowerCase()) {
-      case "sunny":
-        return "☀️";
-      case "cloudy":
-        return "☁️";
-      case "rainy":
-        return "🌧️";
-      case "partly cloudy":
-        return "⛅";
-      default:
-        return "🌤️";
-    }
-  };
 
   if (loading) {
     return (
@@ -152,7 +137,7 @@ const WeatherCard: React.FC = () => {
           lineHeight: 1,
         }}
       >
-        {getWeatherIcon(currentWeather.description)}
+        {currentWeather.icon}
       </Typography>
       <Box sx={{ minWidth: 0, flex: 1 }}>
         <Typography
@@ -187,5 +172,3 @@ const WeatherCard: React.FC = () => {
     </Box>
   );
 };
-
-export default WeatherCard;

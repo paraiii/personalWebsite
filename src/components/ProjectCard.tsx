@@ -21,14 +21,14 @@ type ProjectCardProps = {
   githubUrl?: string;
 };
 
-export default function ProjectCard({
+export const ProjectCard = ({
   title,
   description,
   technologies,
   imageUrl,
   liveUrl,
   githubUrl,
-}: ProjectCardProps) {
+}: ProjectCardProps) => {
   const theme = useTheme();
 
   return (
@@ -56,10 +56,14 @@ export default function ProjectCard({
         {imageUrl && (
           <CardMedia
             component="img"
-            height="200"
+            height="400"
             image={imageUrl}
             alt={title}
-            sx={{ objectFit: "cover" }}
+            sx={{
+              objectFit: "contain",
+              width: "100%",
+              maxHeight: "400px",
+            }}
           />
         )}
         <CardContent>
@@ -146,4 +150,4 @@ export default function ProjectCard({
       </Card>
     </motion.div>
   );
-}
+};

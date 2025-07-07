@@ -3,11 +3,13 @@ import {
   Favorite,
   FavoriteBorder,
   Opacity,
+  Search,
   WbSunny,
 } from "@mui/icons-material";
 import {
   Autocomplete,
   Box,
+  Button,
   Card,
   CardContent,
   Chip,
@@ -39,6 +41,7 @@ const cities = [
   "Berlin",
   "Moscow",
   "Beijing",
+  "Shanghai",
   "San Francisco",
   "Los Angeles",
   "Chicago",
@@ -46,7 +49,7 @@ const cities = [
   "Vancouver",
 ];
 
-export default function WeatherPage() {
+export const WeatherPage = () => {
   const theme = useTheme();
   const { currentWeather, fetchWeather, loading } = useWeather();
   const [useCelsius, setUseCelsius] = useState(true);
@@ -72,17 +75,44 @@ export default function WeatherPage() {
     if (!currentWeather)
       return `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.background.paper} 100%)`;
 
-    switch (currentWeather.description.toLowerCase()) {
-      case "sunny":
-        return "linear-gradient(135deg,rgb(166,63,118) 0%, #ffc371 100%)";
+    const description = currentWeather.description.toLowerCase();
 
-      case "cloudy":
-        return "linear-gradient(135deg, #4b4f63 0%, #a0a3b1 100%)";
-      case "rainy":
-        return "linear-gradient(135deg, #2f3e4e 0%, #5a6373 100%)";
-      default:
-        return `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.background.paper} 100%)`;
+    // 晴天相关
+    if (description.includes("clear") || description.includes("sunny")) {
+      return "linear-gradient(135deg, rgb(166,63,118) 0%, #ffc371 100%)";
     }
+
+    // 多云相关
+    if (description.includes("cloud") || description.includes("overcast")) {
+      return "linear-gradient(135deg, #4b4f63 0%, #a0a3b1 100%)";
+    }
+
+    // 雨天相关
+    if (
+      description.includes("rain") ||
+      description.includes("drizzle") ||
+      description.includes("shower")
+    ) {
+      return "linear-gradient(135deg, #2f3e4e 0%, #5a6373 100%)";
+    }
+
+    // 雪天相关
+    if (description.includes("snow") || description.includes("freezing")) {
+      return "linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)";
+    }
+
+    // 雾天相关
+    if (description.includes("fog")) {
+      return "linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%)";
+    }
+
+    // 雷暴相关
+    if (description.includes("thunder")) {
+      return "linear-gradient(135deg, #424242 0%, #616161 100%)";
+    }
+
+    // 默认背景
+    return `linear-gradient(135deg, ${theme.palette.background.default} 0%, ${theme.palette.background.paper} 100%)`;
   };
 
   return (
@@ -125,37 +155,67 @@ export default function WeatherPage() {
             }}
           >
             <Box sx={{ flex: 1, width: "100%" }}>
-              <Autocomplete
-                options={cities}
-                value={searchValue}
-                onChange={(_, newValue) =>
-                  newValue && handleCitySelect(newValue)
-                }
-                onInputChange={(_, newInputValue) =>
-                  setSearchValue(newInputValue)
-                }
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    placeholder="Search for a city..."
-                    variant="outlined"
-                    fullWidth
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        backgroundColor: theme.palette.background.paper,
-                        borderColor: theme.palette.divider,
-                        "&:hover": {
-                          borderColor: theme.palette.primary.main,
+              <Box sx={{ display: "flex", gap: 1 }}>
+                <Autocomplete
+                  freeSolo
+                  options={cities}
+                  value={searchValue}
+                  onChange={(_, newValue) => {
+                    if (newValue) {
+                      handleCitySelect(newValue);
+                    }
+                  }}
+                  onInputChange={(_, newInputValue) => {
+                    setSearchValue(newInputValue);
+                  }}
+                  onKeyPress={(event) => {
+                    if (event.key === "Enter" && searchValue.trim()) {
+                      handleCitySelect(searchValue.trim());
+                    }
+                  }}
+                  sx={{ flex: 1 }}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      placeholder="Search for a city..."
+                      variant="outlined"
+                      fullWidth
+                      sx={{
+                        "& .MuiOutlinedInput-root": {
+                          backgroundColor: theme.palette.background.paper,
+                          borderColor: theme.palette.divider,
+                          "&:hover": {
+                            borderColor: theme.palette.primary.main,
+                          },
+                          "&.Mui-focused": {
+                            borderColor: theme.palette.primary.main,
+                            boxShadow: `0 0 10px ${theme.palette.primary.main}40`,
+                          },
                         },
-                        "&.Mui-focused": {
-                          borderColor: theme.palette.primary.main,
-                          boxShadow: `0 0 10px ${theme.palette.primary.main}40`,
-                        },
-                      },
-                    }}
-                  />
-                )}
-              />
+                      }}
+                    />
+                  )}
+                />
+                <Button
+                  variant="contained"
+                  onClick={() => {
+                    if (searchValue.trim()) {
+                      handleCitySelect(searchValue.trim());
+                    }
+                  }}
+                  disabled={!searchValue.trim()}
+                  sx={{
+                    minWidth: "auto",
+                    px: 2,
+                    backgroundColor: theme.palette.primary.main,
+                    "&:hover": {
+                      backgroundColor: theme.palette.primary.dark,
+                    },
+                  }}
+                >
+                  <Search />
+                </Button>
+              </Box>
             </Box>
             <Box>
               <FormControlLabel
@@ -438,4 +498,4 @@ export default function WeatherPage() {
       </motion.div>
     </Box>
   );
-}
+};

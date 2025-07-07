@@ -2,43 +2,42 @@ import { Container, CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import HeroSection from "./components/HeroSection";
+import { HeroSection } from "./components/HeroSection";
 import Layout from "./components/Layout";
-import MarkdownRenderer from "./components/MarkdownRenderer";
-import { PrepList } from "./components/page/PrepList";
-import WeatherPage from "./components/page/WeatherPage";
-import ProjectCard from "./components/ProjectCard";
-import Section from "./components/Section";
+import { MarkdownRenderer } from "./components/MarkdownRenderer";
+import { WeatherPage } from "./components/page/WeatherPage";
+import { ProjectCard } from "./components/ProjectCard";
+import { Section } from "./components/Section";
 import { WeatherProvider } from "./contexts/WeatherContext";
 import { useThemeToggle } from "./hooks/useThemeToggle";
+
+import weatherImage from "./assets/weatherImg.png";
 
 const HomePage: React.FC = () => (
   <Container maxWidth="xl" sx={{ py: 4 }}>
     <HeroSection />
-    <Section title="Featured Projects" maxWidth="lg">
+    <Section title="Featured Projects" maxWidth="xl">
       <ProjectCard
-        title="Project Alpha"
-        description="A revolutionary AI-powered application that transforms how we interact with technology."
-        technologies={["React", "TypeScript", "Node.js", "MongoDB"]}
-        imageUrl="https://via.placeholder.com/400x250/1a1b26/9bb5e6?text=Project+Alpha"
-        liveUrl="https://project-alpha.com"
-        githubUrl="https://github.com/username/project-alpha"
+        title="Weather Now"
+        description="A sleek, animated weather interface built with React, MUI, and Emotion, featuring real-time weather data powered by Open-Meteo's public API."
+        technologies={["React", "TypeScript", "REST API"]}
+        imageUrl={weatherImage}
+        liveUrl="/"
+        githubUrl="https://github.com/paraiii/personalWebsite"
       />
       <ProjectCard
-        title="Cyber Security Tool"
-        description="Advanced cybersecurity platform with real-time threat detection and automated response systems."
-        technologies={["Python", "Django", "PostgreSQL", "Redis"]}
-        imageUrl="https://via.placeholder.com/400x250/1a1b26/9bb5e6?text=Cyber+Security"
-        liveUrl="https://cyber-tool.com"
-        githubUrl="https://github.com/username/cyber-tool"
+        title="Interview Tracker – Smart To-Do with Question Bank"
+        description="A productivity tool designed for job seekers and engineers preparing for interviews."
+        technologies={["React", "TypeScript", "REST API"]}
+        imageUrl="https://personal-interview-question-list.netlify.app/"
+        liveUrl="/"
+        githubUrl="https://github.com/paraiii/Add-Question-App"
       />
       <ProjectCard
-        title="Data Visualization Dashboard"
-        description="Interactive dashboard for real-time data analysis and visualization with advanced filtering capabilities."
+        title="Developing..."
+        description="Developing..."
         technologies={["Vue.js", "D3.js", "Express", "MySQL"]}
         imageUrl="https://via.placeholder.com/400x250/1a1b26/9bb5e6?text=Data+Viz"
-        liveUrl="https://data-viz.com"
-        githubUrl="https://github.com/username/data-viz"
       />
     </Section>
   </Container>
@@ -174,7 +173,7 @@ Feel free to explore and provide feedback on any of these projects!
   </Container>
 );
 
-function App() {
+export const App = () => {
   const { theme } = useThemeToggle();
 
   return (
@@ -189,12 +188,9 @@ function App() {
             <Route path="/resume" element={<ResumePage />} />
             <Route path="/playground" element={<PlaygroundPage />} />
             <Route path="/weather" element={<WeatherPage />} />
-            <Route path="/prepList" element={<PrepList />} />
           </Routes>
         </Layout>
       </WeatherProvider>
     </ThemeProvider>
   );
-}
-
-export default App;
+};

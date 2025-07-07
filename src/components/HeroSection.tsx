@@ -2,7 +2,7 @@ import { Box, Container, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import React from "react";
 
-const HeroSection: React.FC = () => {
+export const HeroSection: React.FC = () => {
   const theme = useTheme();
 
   return (
@@ -106,7 +106,7 @@ const HeroSection: React.FC = () => {
                     : "none",
               }}
             >
-              Bingxin Zhang
+              Bingxin
             </Typography>
           </motion.div>
 
@@ -220,5 +220,3 @@ const HeroSection: React.FC = () => {
     </Box>
   );
 };
-
-export default HeroSection;

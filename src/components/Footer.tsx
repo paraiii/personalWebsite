@@ -1,7 +1,7 @@
 import { Box, Divider, Link, Stack, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 
-export default function Footer() {
+export const Footer = () => {
   return (
     <Box
       component="footer"
@@ -133,9 +133,9 @@ export default function Footer() {
             fontFamily: "monospace",
           }}
         >
-          © {new Date().getFullYear()} Bingxin Zhang
+          © {new Date().getFullYear()} Bingxin
         </Typography>
       </motion.div>
     </Box>
   );
-}
+};

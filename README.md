@@ -15,7 +15,7 @@ A modern, cyber-themed personal portfolio website built with React, TypeScript, 
 
 ```bash
 # Clone the repository
-git clone https://github.com/paraiii/personalWeb
+git clone https://github.com/paraiii/personalWebsite
 cd personal
 
 # Install dependencies

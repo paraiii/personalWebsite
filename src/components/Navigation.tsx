@@ -2,7 +2,7 @@ import { Tab, Tabs, useTheme } from "@mui/material";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const Navigation: React.FC = () => {
+export const Navigation: React.FC = () => {
   const theme = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
@@ -68,5 +68,3 @@ const Navigation: React.FC = () => {
     </Tabs>
   );
 };
-
-export default Navigation;

@@ -1,9 +1,9 @@
 import { Box, Container, useTheme } from "@mui/material";
 import React from "react";
-import Footer from "./Footer";
-import Navigation from "./Navigation";
-import ThemeToggle from "./ThemeToggle";
-import WeatherCard from "./WeatherCard";
+import { Footer } from "./Footer";
+import { Navigation } from "./Navigation";
+import { ThemeToggle } from "./ThemeToggle";
+import { WeatherCard } from "./WeatherCard";
 
 interface LayoutProps {
   children: React.ReactNode;

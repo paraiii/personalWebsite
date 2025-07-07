@@ -4,9 +4,13 @@ import { createCyberTheme } from "../theme/theme";
 
 type ThemeMode = "light" | "dark";
 
-export function useThemeToggle() {
+export const useThemeToggle = () => {
   const [themeMode, setThemeMode] = useState<ThemeMode>("dark");
   const [theme, setTheme] = useState<Theme>(createCyberTheme("dark"));
+
+  useEffect(() => {
+    console.log("themeMode", themeMode);
+  }, [themeMode]);
 
   useEffect(() => {
     // 从localStorage获取保存的主题
@@ -29,13 +33,18 @@ export function useThemeToggle() {
     }
   }, []);
 
+  // 当 themeMode 改变时，更新主题
+  useEffect(() => {
+    setTheme(createCyberTheme(themeMode));
+    document.documentElement.setAttribute("data-theme", themeMode);
+    localStorage.setItem("theme", themeMode);
+  }, [themeMode]);
+
   const toggleTheme = () => {
     const newThemeMode: ThemeMode = themeMode === "light" ? "dark" : "light";
+    console.log("newThemeMode", newThemeMode);
     setThemeMode(newThemeMode);
-    setTheme(createCyberTheme(newThemeMode));
-    document.documentElement.setAttribute("data-theme", newThemeMode);
-    localStorage.setItem("theme", newThemeMode);
   };
 
   return { theme, toggleTheme };
-}
+};

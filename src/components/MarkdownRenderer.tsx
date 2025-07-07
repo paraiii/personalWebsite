@@ -6,7 +6,7 @@ type MarkdownRendererProps = {
   content: string;
 };
 
-export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
+export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
@@ -148,4 +148,4 @@ export default function MarkdownRenderer({ content }: MarkdownRendererProps) {
       {content}
     </ReactMarkdown>
   );
-}
+};

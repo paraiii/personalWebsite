@@ -2,7 +2,7 @@ import { Brightness4, Brightness7 } from "@mui/icons-material";
 import { IconButton, Tooltip } from "@mui/material";
 import { useThemeToggle } from "../hooks/useThemeToggle";
 
-export default function ThemeToggle() {
+export const ThemeToggle = () => {
   const { theme, toggleTheme } = useThemeToggle();
 
   const handleClick = (event: React.MouseEvent) => {
@@ -11,8 +11,10 @@ export default function ThemeToggle() {
     toggleTheme();
   };
 
+  const mode = theme.palette.mode;
+
   return (
-    <Tooltip title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}>
+    <Tooltip title={`Switch to ${mode === "light" ? "dark" : "light"} mode`}>
       <IconButton
         data-testid="theme-toggle"
         onClick={handleClick}
@@ -39,8 +41,8 @@ export default function ThemeToggle() {
           pointerEvents: "auto",
         }}
       >
-        {theme === "light" ? <Brightness4 /> : <Brightness7 />}
+        {mode === "light" ? <Brightness4 /> : <Brightness7 />}
       </IconButton>
     </Tooltip>
   );
-}
+};
