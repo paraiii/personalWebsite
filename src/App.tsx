@@ -24,7 +24,7 @@ const HomePage: React.FC = () => (
         description="A sleek, animated weather interface built with React, MUI, and Emotion, featuring real-time weather data powered by Open-Meteo's public API."
         technologies={["React", "TypeScript", "REST API"]}
         imageUrl={weatherImage}
-        liveUrl="/"
+        liveUrl="/weather"
         githubUrl="https://github.com/paraiii/personalWebsite"
       />
       <ProjectCard
