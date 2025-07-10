@@ -13,6 +13,7 @@ import { useThemeToggle } from "./hooks/useThemeToggle";
 
 import weatherImage from "./assets/weatherImg.png";
 import { CounterTimer } from "./components/page/CounterTimer";
+import { TestPage } from "./components/page/TestPage";
 
 const HomePage: React.FC = () => (
   <Container maxWidth="xl" sx={{ py: 4 }}>
@@ -190,6 +191,7 @@ export const App = () => {
             <Route path="/playground" element={<PlaygroundPage />} />
             <Route path="/weather" element={<WeatherPage />} />
             <Route path="/timer" element={<CounterTimer />} />
+            <Route path="/test" element={<TestPage />} />
           </Routes>
         </Layout>
       </WeatherProvider>

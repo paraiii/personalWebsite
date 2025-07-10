@@ -29,6 +29,8 @@ export const Navigation: React.FC = () => {
         return "/weather";
       case "/timer":
         return "/timer";
+      case "/test":
+        return "/test";
       default:
         return "/";
     }
@@ -68,6 +70,7 @@ export const Navigation: React.FC = () => {
       <Tab label="Playground" value="/playground" />
       <Tab label="Weather Now" value="/weather" />
       <Tab label="Counter Timer" value="/timer" />
+      {/* <Tab label="Test" value="/test" /> */}
     </Tabs>
   );
 };
