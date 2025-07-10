@@ -134,7 +134,7 @@ export const CounterTimer: React.FC = () => {
     )}:${String(seconds).padStart(2, "0")}`;
   };
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
     const modes: ("countdown" | "countup")[] = ["countdown", "countup"];
     handleModeChange(modes[newValue]);
   };

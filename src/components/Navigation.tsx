@@ -7,7 +7,7 @@ export const Navigation: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleChange = (_: React.SyntheticEvent, newValue: string) => {
     navigate(newValue);
   };
 
