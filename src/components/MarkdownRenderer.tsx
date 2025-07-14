@@ -17,8 +17,9 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             fontWeight={700}
             gutterBottom
             sx={{
-              color: "var(--classes)",
-              textShadow: "0 0 10px rgba(152, 163, 255, 0.3)",
+              color: "var(--heading1)",
+              textShadow: "0 0 10px var(--heading1), 0 0 20px var(--heading1)",
+              fontSize: "2.5rem", // 大字号
             }}
             {...props}
           />
@@ -29,8 +30,10 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             fontWeight={700}
             gutterBottom
             sx={{
-              color: "var(--classes)",
-              textShadow: "0 0 8px rgba(152, 163, 255, 0.3)",
+              color: "var(--heading2)",
+              marginTop: 3,
+              marginBottom: 1.5,
+              letterSpacing: 1,
             }}
             {...props}
           />
@@ -41,8 +44,9 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             fontWeight={700}
             gutterBottom
             sx={{
-              color: "var(--classes)",
-              textShadow: "0 0 6px rgba(152, 163, 255, 0.3)",
+              color: "var(--heading3)",
+              fontWeight: 700,
+              letterSpacing: 0.5,
             }}
             {...props}
           />
@@ -59,12 +63,17 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
           />
         ),
         li: (props) => (
-          <li>
+          <li
+            style={{
+              marginLeft: "1.5em",
+              listStylePosition: "outside",
+            }}
+          >
             <Typography
               variant="body1"
               component="span"
               sx={{
-                color: "var(--editor-foreground)",
+                color: "var(--body)",
                 lineHeight: 1.7,
               }}
               {...props}
@@ -143,6 +152,7 @@ export const MarkdownRenderer = ({ content }: MarkdownRendererProps) => {
             {...props}
           />
         ),
+        ul: (props) => <ul style={{ marginBottom: "1em" }} {...props} />,
       }}
     >
       {content}

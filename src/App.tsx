@@ -32,7 +32,7 @@ const HomePage: React.FC = () => (
         description="A productivity tool designed for job seekers and engineers preparing for interviews."
         technologies={["React", "TypeScript", "REST API"]}
         imageUrl="https://personal-interview-question-list.netlify.app/"
-        liveUrl="/"
+        liveUrl="https://personal-interview-question-list.netlify.app/"
         githubUrl="https://github.com/paraiii/Add-Question-App"
       />
       <ProjectCard
@@ -48,24 +48,28 @@ const HomePage: React.FC = () => (
 const AboutPage: React.FC = () => (
   <Container maxWidth="lg" sx={{ py: 4 }}>
     <MarkdownRenderer
-      content={`
+      content={`      
 # More About Me
 
-## Background
-I'm a passionate software engineer with a deep interest in creating innovative solutions that make a difference. My journey in technology began with curiosity and has evolved into a career focused on building robust, scalable applications.
+## Background  
+I'm a software engineer with a strong frontend focus and a passion for building thoughtful, responsive, and scalable web applications. My journey started with a curiosity for how things work and evolved into a career driven by hands-on problem solving, attention to detail, and creating value through clean design and robust architecture.
 
 ## Skills & Expertise
-- **Frontend Development**: React, Vue.js, TypeScript, CSS3
-- **Backend Development**: Node.js, Python, Django, Express
-- **Database**: PostgreSQL, MongoDB, Redis
-- **DevOps**: Docker, AWS, CI/CD, Git
-- **Other**: Machine Learning, Data Analysis, UI/UX Design
+- **Frontend Development**: React, Svelte, JavScript, TypeScript, MUI, Emotion, Styled Components
+- **Backend & APIs**: RESTful APIs, GraphQL  
+- **Testing & Quality**: Jest, React Testing Library, CI/CD pipelines  
+- **CI/CD & Automation**: Azure DevOps Pipelines (YAML), Dockerized deployment, Build triggers, Test stages
+- **Dev Experience Tools**: MSW for API mocking, Storybook for component isolation, Chrome DevTools, Lighthouse for auditing
+- **Tooling & Design**: Figma, Storybook, VSCode, ESLint, Prettier  
+- **Collaboration**: Agile, cross-functional teamwork, stakeholder communication  
+- **Version Control & Workflow**: Git, GitHub Flow, Azure DevOps Boards, Pull Request Reviews
 
 ## Philosophy
-I believe in writing clean, maintainable code and creating user experiences that are both beautiful and functional. Every project is an opportunity to learn and grow.
+I believe good software is not just functional — it should be elegant, maintainable, and user-centric. Whether it's improving accessibility, refactoring complex flows, or introducing better developer tooling, I enjoy iterating toward clean, modular solutions that scale.
+
 
 ## Current Focus
-Currently exploring the intersection of AI and web development, working on projects that leverage machine learning to create more intelligent and responsive applications.
+I'm currently deepening my work across interactive system design, real-world API integration, and architecture for complex flows. I'm also exploring design systems, signals/reactivity patterns, and applying AI to streamline development workflows.
     `}
     />
   </Container>
@@ -77,26 +81,61 @@ const ProjectsPage: React.FC = () => (
       content={`
 # Past Projects
 
-## 2023
-### E-commerce Platform
-Built a full-stack e-commerce solution with React frontend and Node.js backend. Features include user authentication, payment processing, and inventory management.
+## 2025
 
-### Weather App
-Developed a weather application using OpenWeather API with location-based forecasting and interactive maps.
+### Personal Developer Website  
+A modular, cyberpunk-inspired portfolio built with **React + TypeScript + MUI + Emotion**.  
+- Dark/light mode with custom theme provider  
+- Scroll-snapping FeaturedProjects module with project cards  
+- Weather integration via React Context + Open-Meteo API  
+- Responsive design, deployed via Netlify
+
+### ARB E-commerce Platform – Vehicle Selector & Suspension Configurator  
+Led the front-end development of key product configuration tools with **React + JavaScro[t] + MUI + Emotion** in a large-scale **GraphQL + RESTful** architecture and integrated with **AEM website:  
+- **Vehicle Selector**:  
+  - Built a multi-step selector UI for make/model/year/trim with scroll snapping, form state tracking, and MSW-mocked APIs  
+  - Integrated with AEM via vanilla JS + React bridge  
+  - Used GraphQL mutations to add products to Quote Cart based on selected vehicleID  
+- **Suspension Configurator**:  
+  - Built a dynamic stepper experience based on API-driven questions  
+  - Integrated snapshot recovery, session ID refresh, backstep logic, and result summary  
+  - Applied modularization and caching strategies for better UX and maintainability  
+- CI/CD with **Azure DevOps**, containerized via **Docker**
+
+## 2024 – Present
+
+### Interview Tracker  
+A productivity tool for tracking coding interview questions.  
+- Developed using **React + TypeScript + MUI**  
+- Support for tagging, filtering, progress tracking  
+- Emphasized accessibility, modular architecture, and smooth local state experience
+
+### ARB Centre Storefront Admin  
+Built and maintained internal tools and UI components to support e-commerce product lifecycle:  
+- Responsive admin dashboards  
+- GraphQL queries/mutations for quote cart management  
+- Close collaboration with external vendors (AEM, Magento)
+
+## 2023 – 2024
+
+### RPV Intranet Platforms  
+As a frontend engineer at **Rail Projects Victoria**, developed dynamic intranet tools using **Svelte + TypeScript + MUI**:  
+- Built responsive admin portals with tabview navigation, dynamic tables, filter/sort/date toggles  
+- Enabled CRUD operations via REST API (connected to SharePoint lists)  
+- Implemented dark/light mode, modal forms, and accessible design patterns  
+- Integrated with SharePoint through modern script editor + iframe web parts  
+- Designed and maintained **Azure YAML pipelines** for CI/CD deployments:
+  - Multi-branch triggers
+  - Build agents on Windows VM
+  - Rollout coordination across environments
 
 ## 2022
-### Task Management System
-Created a collaborative task management tool with real-time updates and team collaboration features.
 
-### Portfolio Website
-Designed and developed a responsive portfolio website with modern animations and SEO optimization.
+### AHRI Website Project  
+Worked on corporate website development using **WordPress + HTML + CSS + JavaScript**.  
+- Customized themes and components  
+- Implemented responsive layout and SEO optimization
 
-## 2021
-### Blog Platform
-Built a content management system for blogs with markdown support and comment system.
-
-### API Gateway
-Developed a microservices API gateway with rate limiting and authentication middleware.
     `}
     />
   </Container>
