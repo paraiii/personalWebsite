@@ -1,17 +1,18 @@
 import { Brightness4, Brightness7 } from "@mui/icons-material";
 import { IconButton, Tooltip } from "@mui/material";
-import { useThemeToggle } from "../hooks/useThemeToggle";
 
-export const ThemeToggle = () => {
-  const { theme, toggleTheme } = useThemeToggle();
-
+export const ThemeToggle = ({
+  toggleTheme,
+  mode,
+}: {
+  toggleTheme: () => void;
+  mode: "light" | "dark";
+}) => {
   const handleClick = (event: React.MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
     toggleTheme();
   };
-
-  const mode = theme.palette.mode;
 
   return (
     <Tooltip title={`Switch to ${mode === "light" ? "dark" : "light"} mode`}>

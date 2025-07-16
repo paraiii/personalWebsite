@@ -67,6 +67,7 @@ const cyberColors = {
 
 export const createCyberTheme = (mode: "light" | "dark") => {
   const colors = cyberColors[mode];
+  console.log(" cybercolor", mode);
 
   return createTheme({
     palette: {

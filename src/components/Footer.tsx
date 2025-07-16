@@ -9,9 +9,9 @@ export const Footer = () => {
         mt: "auto",
         py: 4,
         textAlign: "center",
-        color: "text.secondary",
-        backgroundColor: "var(--sidebar-background)",
-        borderTop: "1px solid var(--operators)",
+        color: (theme) => theme.palette.text.secondary,
+        backgroundColor: (theme) => theme.palette.background.paper,
+        borderTop: (theme) => `1px solid ${theme.palette.divider}`,
         position: "relative",
         "&::before": {
           content: '""',
@@ -20,8 +20,8 @@ export const Footer = () => {
           left: 0,
           right: 0,
           height: "1px",
-          background:
-            "linear-gradient(90deg, transparent, var(--purple-accent), transparent)",
+          background: (theme) =>
+            `linear-gradient(90deg, transparent, ${theme.palette.primary.main}, transparent)`,
         },
       }}
     >
@@ -40,11 +40,11 @@ export const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
           sx={{
-            color: "var(--functions)",
+            color: (theme) => theme.palette.secondary.main,
             textDecoration: "none",
             "&:hover": {
-              color: "var(--purple-accent)",
-              textShadow: "0 0 8px var(--purple-accent)",
+              color: (theme) => theme.palette.primary.main,
+              textShadow: (theme) => `0 0 8px ${theme.palette.primary.main}`,
             },
             transition: "all 0.3s ease",
           }}
@@ -56,11 +56,11 @@ export const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
           sx={{
-            color: "var(--functions)",
+            color: (theme) => theme.palette.secondary.main,
             textDecoration: "none",
             "&:hover": {
-              color: "var(--purple-accent)",
-              textShadow: "0 0 8px var(--purple-accent)",
+              color: (theme) => theme.palette.primary.main,
+              textShadow: (theme) => `0 0 8px ${theme.palette.primary.main}`,
             },
             transition: "all 0.3s ease",
           }}
@@ -72,11 +72,11 @@ export const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
           sx={{
-            color: "var(--functions)",
+            color: (theme) => theme.palette.secondary.main,
             textDecoration: "none",
             "&:hover": {
-              color: "var(--purple-accent)",
-              textShadow: "0 0 8px var(--purple-accent)",
+              color: (theme) => theme.palette.primary.main,
+              textShadow: (theme) => `0 0 8px ${theme.palette.primary.main}`,
             },
             transition: "all 0.3s ease",
           }}
@@ -88,11 +88,11 @@ export const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
           sx={{
-            color: "var(--functions)",
+            color: (theme) => theme.palette.secondary.main,
             textDecoration: "none",
             "&:hover": {
-              color: "var(--purple-accent)",
-              textShadow: "0 0 8px var(--purple-accent)",
+              color: (theme) => theme.palette.primary.main,
+              textShadow: (theme) => `0 0 8px ${theme.palette.primary.main}`,
             },
             transition: "all 0.3s ease",
           }}
@@ -104,7 +104,7 @@ export const Footer = () => {
       <Divider
         sx={{
           my: 2,
-          borderColor: "var(--operators)",
+          borderColor: (theme) => theme.palette.divider,
           opacity: 0.5,
         }}
       />
@@ -119,7 +119,7 @@ export const Footer = () => {
           display="block"
           sx={{
             mb: 1,
-            color: "var(--comments)",
+            color: (theme) => theme.palette.text.secondary,
             fontFamily: "monospace",
           }}
         >
@@ -129,7 +129,7 @@ export const Footer = () => {
           variant="caption"
           display="block"
           sx={{
-            color: "var(--editor-foreground)",
+            color: (theme) => theme.palette.text.primary,
             fontFamily: "monospace",
           }}
         >
