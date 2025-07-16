@@ -1,5 +1,5 @@
 import { Box, Container, useTheme } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Footer } from "./Footer";
 import { Navigation } from "./Navigation";
 import { ThemeToggle } from "./ThemeToggle";
@@ -7,10 +7,19 @@ import { WeatherCard } from "./WeatherCard";
 
 interface LayoutProps {
   children: React.ReactNode;
+  toggleTheme: () => void;
+  mode: "light" | "dark";
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+export const Layout: React.FC<LayoutProps> = ({
+  children,
+  toggleTheme,
+  mode,
+}) => {
   const theme = useTheme();
+  useEffect(() => {
+    console.log("background", theme.palette.background.paper, theme);
+  }, [theme]);
 
   return (
     <Box
@@ -59,7 +68,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
             {/* Theme Toggle */}
             <Box sx={{ flexShrink: 0 }}>
-              <ThemeToggle />
+              <ThemeToggle toggleTheme={toggleTheme} mode={mode} />
             </Box>
           </Box>
         </Container>
@@ -68,7 +77,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {/* Main Content */}
       <Box
         component="main"
-        sx={{ flex: 1, display: "flex", flexDirection: "column" }}
+        sx={{
+          backgroundColor: theme.palette.background.paper,
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+        }}
       >
         {children}
       </Box>
@@ -78,5 +92,3 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     </Box>
   );
 };
-
-export default Layout;

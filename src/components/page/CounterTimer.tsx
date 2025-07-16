@@ -313,24 +313,14 @@ export const CounterTimer: React.FC = () => {
       <Paper
         elevation={0}
         sx={{
-          backgroundColor:
-            theme.palette.mode === "dark"
-              ? "rgba(255, 255, 255, 0.1)"
-              : "rgba(0, 0, 0, 0.1)",
+          backgroundColor: theme.palette.glass.background,
+          border: `1px solid ${theme.palette.glass.border}`,
+          boxShadow: theme.palette.glass.shadow,
           backdropFilter: "blur(10px)",
-          border: `1px solid ${
-            theme.palette.mode === "dark"
-              ? "rgba(255, 255, 255, 0.2)"
-              : "rgba(0, 0, 0, 0.2)"
-          }`,
           borderRadius: 4,
           p: 4,
           minWidth: 400,
           textAlign: "center",
-          boxShadow:
-            theme.palette.mode === "dark"
-              ? "0 8px 32px rgba(0, 0, 0, 0.3)"
-              : "0 8px 32px rgba(0, 0, 0, 0.1)",
         }}
       >
         <Typography

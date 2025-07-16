@@ -46,6 +46,11 @@ body {
   --list-hover: #504bd5b7;
   --terminal-background: #1d1f28;
   --terminal-foreground: #ffffffc5;
+
+  --heading1: #a259ff;
+  --heading2: #5ad6ff;
+  --heading3: #b388ff;
+  --body: #1a202c;
 }
 
 /* 深色主题 */
@@ -68,6 +73,11 @@ body {
   --list-hover: #504bd5b7;
   --terminal-background: #1d1f28;
   --terminal-foreground: #ffffffc5;
+
+  --heading1: #a259ff;
+  --heading2: #5ad6ff;
+  --heading3: #b388ff;
+  --body: #9bb5e6;
 }
 
 /* 浅色主题 */

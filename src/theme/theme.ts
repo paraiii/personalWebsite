@@ -1,5 +1,24 @@
 import { createTheme } from "@mui/material/styles";
 
+declare module "@mui/material/styles" {
+  interface Palette {
+    glass: {
+      background: string;
+      border: string;
+      shadow: string;
+      inputBackground: string;
+    };
+  }
+  interface PaletteOptions {
+    glass?: {
+      background?: string;
+      border?: string;
+      shadow?: string;
+      inputBackground?: string;
+    };
+  }
+}
+
 // Cyber主题颜色调色板
 const cyberColors = {
   // 深色主题颜色
@@ -48,6 +67,7 @@ const cyberColors = {
 
 export const createCyberTheme = (mode: "light" | "dark") => {
   const colors = cyberColors[mode];
+  console.log(" cybercolor", mode);
 
   return createTheme({
     palette: {
@@ -71,6 +91,17 @@ export const createCyberTheme = (mode: "light" | "dark") => {
         secondary: colors.comments,
       },
       divider: mode === "dark" ? "#2d3748" : "#e2e8f0",
+      glass: {
+        background:
+          mode === "dark" ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)",
+        border: mode === "dark" ? "rgba(255,255,255,0.18)" : "rgba(0,0,0,0.18)",
+        shadow:
+          mode === "dark"
+            ? "0 8px 32px rgba(0,0,0,0.3)"
+            : "0 8px 32px rgba(0,0,0,0.1)",
+        inputBackground:
+          mode === "dark" ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.04)",
+      },
     },
     typography: {
       fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',

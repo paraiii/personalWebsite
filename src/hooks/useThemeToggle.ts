@@ -5,39 +5,28 @@ import { createCyberTheme } from "../theme/theme";
 type ThemeMode = "light" | "dark";
 
 export const useThemeToggle = () => {
-  const [themeMode, setThemeMode] = useState<ThemeMode>("dark");
-  const [theme, setTheme] = useState<Theme>(createCyberTheme("dark"));
+  const [themeMode, setThemeMode] = useState<ThemeMode>(() => {
+    // 初始化状态时同步读取 localStorage
+    const saved = localStorage.getItem("theme") as ThemeMode;
+    if (saved === "light" || saved === "dark") {
+      return saved;
+    }
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    return prefersDark ? "dark" : "light";
+  });
+
+  const [theme, setTheme] = useState<Theme>(createCyberTheme(themeMode));
+  useEffect(() => {
+    console.log("theme", theme.palette.mode);
+  }, [theme]);
 
   useEffect(() => {
     console.log("themeMode", themeMode);
-  }, [themeMode]);
-
-  useEffect(() => {
-    // 从localStorage获取保存的主题
-    const savedTheme = localStorage.getItem("theme") as ThemeMode;
-
-    if (savedTheme) {
-      setThemeMode(savedTheme);
-      setTheme(createCyberTheme(savedTheme));
-      document.documentElement.setAttribute("data-theme", savedTheme);
-    } else {
-      // 检测系统主题偏好
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      const defaultTheme: ThemeMode = prefersDark ? "dark" : "light";
-      setThemeMode(defaultTheme);
-      setTheme(createCyberTheme(defaultTheme));
-      document.documentElement.setAttribute("data-theme", defaultTheme);
-      localStorage.setItem("theme", defaultTheme);
-    }
-  }, []);
-
-  // 当 themeMode 改变时，更新主题
-  useEffect(() => {
-    setTheme(createCyberTheme(themeMode));
     document.documentElement.setAttribute("data-theme", themeMode);
     localStorage.setItem("theme", themeMode);
+    setTheme(createCyberTheme(themeMode));
   }, [themeMode]);
 
   const toggleTheme = () => {
