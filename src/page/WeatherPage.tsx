@@ -23,7 +23,7 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useWeather } from "../../hooks/useWeather";
+import { useWeather } from "../hooks/useWeather";
 
 const cities = [
   "Melbourne",
