@@ -29,12 +29,12 @@ export const TechnologiesSection: React.FC = () => {
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>
       <Typography
-        variant="h2"
-        component="h2"
-        align="center"
+        variant="h4"
+        component="h4"
+        align="left"
         sx={{ mb: 6, fontWeight: "bold" }}
       >
-        Technologies I Use
+        Technologies
       </Typography>
       <Grid container spacing={2} justifyContent="center">
         {techList.map((tech, index) => (
