@@ -2,26 +2,28 @@ import { Container, CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import React, { useMemo, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { HeroSection } from "./components/HeroSection";
 import { Layout } from "./components/Layout";
 import { MarkdownRenderer } from "./components/MarkdownRenderer";
-import { WeatherPage } from "./components/page/WeatherPage";
 import { ProjectCard } from "./components/ProjectCard";
 import { Section } from "./components/Section";
 import { WeatherProvider } from "./contexts/WeatherContext";
+import { WeatherPage } from "./page/WeatherPage";
+import { HeroSection } from "./sections/HeroSection";
+import { TechnologiesSection } from "./sections/TechnologiesSection";
 import { createCyberTheme } from "./theme/theme";
 
 import weatherImage from "./assets/weatherImg.png";
-import { CounterTimer } from "./components/page/CounterTimer";
-import { TestPage } from "./components/page/TestPage";
 import aboutMe from "./content/about.md?raw";
 import playground from "./content/playground.md?raw";
 import pastProjects from "./content/projects.md?raw";
 import resume from "./content/resume.md?raw";
+import { CounterTimer } from "./page/CounterTimer";
+import { TestPage } from "./page/TestPage";
 
 const HomePage: React.FC = () => (
   <Container maxWidth="xl" sx={{ py: 4 }}>
     <HeroSection />
+    <TechnologiesSection />
     <Section title="Featured Projects" maxWidth="xl">
       <ProjectCard
         title="Weather Now"

@@ -1,6 +1,8 @@
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { Box, Container, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import React from "react";
+import { LikeButton } from "../components/LikeButton";
 
 export const HeroSection: React.FC = () => {
   const theme = useTheme();
@@ -15,6 +17,8 @@ export const HeroSection: React.FC = () => {
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
+        maxWidth: "1200px",
+        mx: "auto",
         "&::before": {
           content: '""',
           position: "absolute",
@@ -127,7 +131,17 @@ export const HeroSection: React.FC = () => {
                 mx: "auto",
               }}
             >
-              Software Engineer & Creative Developer
+              Software Engineer
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <LocationOnIcon /> Melbourne
             </Typography>
           </motion.div>
 
@@ -151,6 +165,7 @@ export const HeroSection: React.FC = () => {
               difference.
             </Typography>
           </motion.div>
+          <LikeButton />
 
           {/* 抽象赛博图元素 */}
           <Box
