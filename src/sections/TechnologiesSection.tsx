@@ -1,11 +1,5 @@
-import {
-  Box,
-  Container,
-  Grid,
-  Paper,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, Container, Paper, Typography, useTheme } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import { motion } from "framer-motion";
 import React from "react";
 import { techList } from "../data/techList";
@@ -14,10 +8,9 @@ export const TechnologiesSection: React.FC = () => {
   const theme = useTheme();
 
   const cardVariants = {
-    initial: { scale: 1, boxShadow: theme.shadows[3] },
+    initial: { scale: 1 },
     hover: {
       scale: 1.05,
-      boxShadow: theme.shadows[10],
       transition: { duration: 0.3 },
     },
     tap: {
@@ -36,9 +29,9 @@ export const TechnologiesSection: React.FC = () => {
       >
         Technologies
       </Typography>
-      <Grid container spacing={2} justifyContent="center">
+      <Grid container spacing={2} justifyContent="start">
         {techList.map((tech, index) => (
-          <Grid key={index}>
+          <Grid key={index} size={{ xs: 6, sm: 4, md: 3 }}>
             <a
               href={tech.link}
               target="_blank"
