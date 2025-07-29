@@ -16,6 +16,7 @@ interface HeartBurst {
   x: number;
   y: number;
   scale: number;
+  rotate: number;
 }
 
 export const LikeButton: React.FC<LikeButtonProps> = ({
@@ -37,16 +38,28 @@ export const LikeButton: React.FC<LikeButtonProps> = ({
   };
 
   const createBurst = () => {
-    const id = Date.now();
-    const newBurst: HeartBurst = {
-      id,
-      x: (Math.random() - 0.5) * 40,
-      y: (Math.random() - 1) * 20,
-      scale: 0.8 + Math.random() * 0.6,
-    };
-    setBursts((prev) => [...prev, newBurst]);
+    const count = 6; // 每次生成 6 个爱心
+    const newBursts: HeartBurst[] = Array.from({ length: count }).map(
+      (_, i) => {
+        const id = Date.now() + i;
+        const angle = Math.random() * 2 * Math.PI;
+        const radius = 40 + Math.random() * 60; // 弹出距离
+        return {
+          id,
+          x: Math.cos(angle) * radius,
+          y: Math.sin(angle) * radius,
+          scale: 0.8 + Math.random() * 0.4,
+          rotate: Math.random() * 90 - 45, // -45 ~ +45 度
+        };
+      }
+    );
+
+    setBursts((prev) => [...prev, ...newBursts]);
+
     setTimeout(() => {
-      setBursts((prev) => prev.filter((b) => b.id !== id));
+      setBursts((prev) =>
+        prev.filter((b) => !newBursts.some((n) => n.id === b.id))
+      );
     }, 1000);
   };
 
@@ -57,20 +70,21 @@ export const LikeButton: React.FC<LikeButtonProps> = ({
           {liked ? <Favorite /> : <FavoriteBorder />}
         </IconButton>
         <Typography>{count}</Typography>
+
+        <AnimatePresence>
+          {bursts.map(({ id, x, y, scale, rotate }) => (
+            <BurstHeart
+              key={id}
+              initial={{ opacity: 1, x: 0, y: 0, scale: 0.6, rotate: 0 }}
+              animate={{ opacity: 0, x, y, scale, rotate }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <FavoriteIcon />
+            </BurstHeart>
+          ))}
+        </AnimatePresence>
       </HeartContainer>
-      <AnimatePresence>
-        {bursts.map(({ id, x, y, scale }) => (
-          <BurstHeart
-            key={id}
-            initial={{ opacity: 1, x: 0, y: 0, scale }}
-            animate={{ opacity: 0, x, y }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-          >
-            <FavoriteIcon />
-          </BurstHeart>
-        ))}
-      </AnimatePresence>
     </Box>
   );
 };
