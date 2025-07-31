@@ -1,0 +1,9 @@
+[dev]
+  command = "vite"
+  port = 8888
+  publish = "dist"
+  functions = "netlify/functions"
+
+[build.environment]
+  SUPABASE_URL = "https://sfefupahemgjvccfiodi.supabase.co"
+  SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNmZWZ1cGFoZW1nanZjY2Zpb2RpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM4NDExMTgsImV4cCI6MjA2OTQxNzExOH0.hYCLGUxsXouxYydomyxyyR1NeGkETH-upG5I8nRCnqw"
