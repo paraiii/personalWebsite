@@ -4,7 +4,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import type { Theme } from "@mui/material";
 import { Box, IconButton, Typography } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface LikeButtonProps {
   initialCount?: number;
@@ -21,21 +21,54 @@ interface HeartBurst {
 
 export const LikeButton: React.FC<LikeButtonProps> = ({
   initialCount = 0,
-  onLike,
-  maxLikes,
+  // onLike,
+  // maxLikes,
 }) => {
   const [count, setCount] = useState(initialCount);
   const [liked, setLiked] = useState(false);
   const [bursts, setBursts] = useState<HeartBurst[]>([]);
 
-  const handleClick = () => {
-    if (maxLikes && count >= maxLikes) return;
-    const newCount = count + 1;
-    setCount(newCount);
-    setLiked(true);
-    onLike?.(newCount);
-    createBurst();
+  useEffect(() => {
+    fetch("../../../.netlify/functions/likeCount")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.count) setCount(data.count);
+      });
+  }, []);
+
+  const handleClick = async () => {
+    try {
+      const res = await fetch("../../../.netlify/functions/likeCount", {
+        method: "POST",
+      });
+
+      if (!res.ok) {
+        throw new Error(`Server error: ${res.status}`);
+      }
+
+      const data = await res.json();
+      console.log("🔥 POST response:", data);
+
+      if (data?.count !== undefined) {
+        setCount(data.count);
+        setLiked(true);
+        createBurst();
+      } else {
+        console.error("❌ Invalid response:", data);
+      }
+    } catch (err) {
+      console.error("❌ Failed to update like count:", err);
+    }
   };
+
+  // const handleClick = () => {
+  //   if (maxLikes && count >= maxLikes) return;
+  //   const newCount = count + 1;
+  //   setCount(newCount);
+  //   setLiked(true);
+  //   onLike?.(newCount);
+  //   createBurst();
+  // };
 
   const createBurst = () => {
     const count = 6; // 每次生成 6 个爱心
