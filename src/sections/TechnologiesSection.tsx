@@ -47,14 +47,13 @@ export const TechnologiesSection: React.FC = () => {
               >
                 <Paper
                   sx={{
-                    width: 128,
-                    height: 128,
+                    aspectRatio: "1",
                     p: 2,
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
-                    gap: 1,
+                    gap: 5,
                     cursor: "pointer",
                     backgroundColor: theme.palette.background.paper,
                     border: `1px solid ${theme.palette.divider}`,
