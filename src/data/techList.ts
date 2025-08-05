@@ -3,6 +3,7 @@ import dockerIcon from "../assets/docker.svg";
 import graphqlIcon from "../assets/graphql.svg";
 import materialIcon from "../assets/material.svg";
 import nextjsIcon from "../assets/nextjs.svg";
+import postgreSQLcon from "../assets/postgreSQLcon.svg";
 import reactIcon from "../assets/react.svg";
 import svelteIcon from "../assets/svelte.svg";
 import typescriptIcon from "../assets/typescript.svg";
@@ -20,14 +21,14 @@ export const techList: TechItem[] = [
     link: "https://react.dev/",
   },
   {
+    name: "Svelte",
+    icon: svelteIcon,
+    link: "https://svelte.dev/",
+  },
+  {
     name: "TypeScript",
     icon: typescriptIcon,
     link: "https://www.typescriptlang.org/",
-  },
-  {
-    name: "MUI",
-    icon: materialIcon,
-    link: "https://mui.com/",
   },
   {
     name: "Next.js",
@@ -40,14 +41,19 @@ export const techList: TechItem[] = [
     link: "https://graphql.org/",
   },
   {
-    name: "Svelte",
-    icon: svelteIcon,
-    link: "https://svelte.dev/",
+    name: "MUI",
+    icon: materialIcon,
+    link: "https://mui.com/",
   },
   {
     name: "Ant Design",
     icon: antdesignIcon,
     link: "https://ant.design/",
+  },
+  {
+    name: "PostgreSQL",
+    icon: postgreSQLcon,
+    link: "https://www.postgresql.org/about/",
   },
   {
     name: "Docker",

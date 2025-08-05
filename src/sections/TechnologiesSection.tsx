@@ -29,7 +29,7 @@ export const TechnologiesSection: React.FC = () => {
       >
         Technologies
       </Typography>
-      <Grid container spacing={2} justifyContent="center">
+      <Grid container spacing={2} justifyContent="start">
         {techList.map((tech, index) => (
           <Grid key={index} size={{ xs: 6, sm: 4, md: 3 }}>
             <a
